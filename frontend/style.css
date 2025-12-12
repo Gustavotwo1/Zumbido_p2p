@@ -1,0 +1,100 @@
+/* ---- Reset simples ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4a90e2, #0056b3);
+    color: #fff;
+}
+
+/* ---- Container principal ---- */
+.window {
+    background: #ffffff;
+    color: #222;
+    width: 380px;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.window h1 {
+    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #0056b3;
+}
+
+.window p {
+    margin-bottom: 25px;
+    font-size: 15px;
+    color: #333;
+}
+
+/* ---- Inputs ---- */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px #0056b3;
+}
+
+/* ---- Botão ---- */
+button {
+    width: 90%;
+    padding: 14px;
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    background: #ff4500;
+    color: white;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #d93a00;
+    transform: scale(1.03);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* ---- Animação de tremor (quando receber ZUMBIDO) ---- */
+.shake {
+    animation: shakeAnim 0.3s ease-in-out infinite;
+}
+
+@keyframes shakeAnim {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+}
+
+/* ---- Fade quando abrir ---- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

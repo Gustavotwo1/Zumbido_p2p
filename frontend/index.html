@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zumbido P2P</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="window">
+        <h1>Zumbido P2P (UDP)</h1>
+        <p>Envie um zumbido para outro PC na mesma rede!</p>
+
+        <div>
+            <input id="ip" type="text" placeholder="IP do colega (ex: 192.168.1.15)">
+            <br>
+            <input id="port" type="number" placeholder="Porta UDP (ex: 5000)" value="5000">
+            <br><br>
+            <button onclick="enviarZumbido()">Enviar Zumbido</button>
+        </div>
+
+        <script src="script.js"></script>
+
+    </div>
+
+</body>
+</html>
