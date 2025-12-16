@@ -20,7 +20,7 @@ socket.on('message', (msg, rinfo) => {
     if (data.command === 'shake') {
         
         // Envia para o Frontend via WebSocket
-        wss.clients.forEach(client => {
+        wss.clients.forEach(client => { 
             if (client.readyState === WebSocket.OPEN) {
                 client.send(JSON.stringify({
                     type: 'zumbido_received',
@@ -50,27 +50,25 @@ app.post('/api/send-zumbido', (req, res) => {
     const { targetIP, targetPort } = req.body;
 
     if (!targetIP || !targetPort) {
-        return res.json({ status: "ERROR", message: "IP ou Porta inválidos" });
+        return res.status(400).json({ status: 'ERROR', message: 'IP ou porta inválidos' });
     }
-
-    console.log(`[HTTP] Enviando zumbido para ${targetIP}:${targetPort}`);
 
     const command = {
         command: 'shake',
         sender: socket.address().address,
-        ts: Date.now()
+        timestamp: new Date().toISOString()
     };
 
-    const msg = Buffer.from(JSON.stringify(command));
+    const message = Buffer.from(JSON.stringify(command));
 
-    socket.send(msg, 0, msg.length, targetPort, targetIP, (err) => {
+    socket.send(message, 0, message.length, targetPort, targetIP, (err) => {
         if (err) {
-            console.log("[UDP] Erro:", err);
-            return res.json({ status: "ERROR", message: "Falha no envio UDP" });
+            console.error('[UDP] Erro ao enviar:', err);
+            return res.json({ status: 'WARNING', message: 'Erro ao enviar UDP' });
         }
 
-        console.log(`[UDP] Zumbido enviado P2P para ${targetIP}:${targetPort}`);
-        res.json({ status: "OK", message: "Zumbido enviado" });
+        console.log(`[UDP] Zumbido enviado para ${targetIP}:${targetPort}`);
+        res.json({ status: 'OK' });
     });
 });
 
