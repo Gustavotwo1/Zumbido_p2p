@@ -68,7 +68,7 @@ app.post('/api/send-zumbido', (req, res) => {
         }
 
         console.log(`[UDP] Zumbido enviado para ${targetIP}:${targetPort}`);
-        res.json({ status: 'OK' });
+        res.json({ status: 'OK', message: 'Zumbido enviado com sucesso!' });
     });
 });
 
