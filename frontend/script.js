@@ -1,5 +1,5 @@
 // Conecta WebSocket automaticamente usando o IP da máquina que abriu o site
-const WS_URL = `ws://${window.location.hostname}:3000/ws`;
+const WS_URL = `ws://${window.location.hostname}/ws`;
 const ws = new WebSocket(WS_URL);
 
 // Quando o backend avisar que recebeu um zumbido
